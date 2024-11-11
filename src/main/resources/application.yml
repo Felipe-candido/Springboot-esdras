@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: devnotes
+  datasource:
+    url: jdbc:mysql://localhost:3306/devnotes?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=UTF-8&useTimezone=true&serverTimezone=UTC
+    username: root
+    password: 
+    driverClassName: com.mysql.cj.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true

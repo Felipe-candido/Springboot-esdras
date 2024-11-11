@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" lang="us">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Nota</title>
+</head>
+
+<body>
+    <section layout:fragment="corpo">
+        <div class="container">
+            <h1>Cadastro de Categorias</h1>
+            <div class="row mx-auto">
+                <form method="post" th:object="${nota}"
+                    th:action="${nota.id == null} ? @{/notas/salvar} : @{/notas/atualizar}">
+                    <div class="mb-3">
+                        <label for="nota">Nota</label>
+                        <input type="text" class="form-control" id="nota" th:field="*{conteudo}" required>
+                        <input type="hidden" id="id" th:field="*{id}">
+                    </div>
+                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+                        th:field="*{categoria}">
+                        <option th:each="c : ${categorias}" th:value="${c.id}" th:text="${c.descricao}">
+                        </option>
+                    </select>
+                    <button th:disabled="${categorias.size() == 0}" type="submit" class="btn btn-primary">Salvar</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <script th:src="@{/js/bootstrap.bundle.min.js}" defer></script>
+</body>
+
+</html>

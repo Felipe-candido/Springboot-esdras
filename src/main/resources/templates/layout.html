@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!-- Aqui nós incluimos os atributos th e layout para a decoração e renderização de páginas com Thymeleaf -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Como está página será a base para outras páginas, iremos reaproveitar os imports do CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+</head>
+<body>
+    <!--Aqui nós iremos fazer a incluão de um fragmento de código definito previamente visando o reaproveitamento. -->
+    <header th:replace="fragmentos/cabecalho :: cabecalho"></header>
+    <main>
+        <!--Aqui iremos incluir o conteúdo dinamico, este arquivo em linhas gerais irá decorar o fragmento de código abaixo, 
+             ou seja, as páginas terão a mesma aparencia, mas o conteúdo da tag main será exclusivo. -->
+        <section layout:fragment="corpo"></section>
+    </main>
+    <!--Iremos reaproveitar também o import do JS -->
+    <script th:src="@{/js/bootstrap.bundle.min.js}" defer></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!-- Incluir o suporte para o Thymeleaf-->
+<html lang="pt-BR" layout:decorate="~{layout}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Categorias</title>
+</head>
+
+<body>
+    <!--Definir fragmento para o corpo da página de decoração-->
+    <section layout:fragment="corpo">
+        <div class="container">
+            <div class="jumbotron">
+                <h1 class="display-4 mb-3">Categorias</h1>
+                <div>
+                    <a th:href="@{/categorias/cadastrar}" class="btn btn-primary mb-3">Nova Categoria</a>
+                </div>
+            </div>
+            <table th:if="${categorias.size() > 0}" class="table table-striped table-hover table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="c : ${categorias}">
+                        <th scope="row" th:text="${c.id}"></th>
+                        <td th:text="${c.descricao}"></td>
+                        <td colspan="2">
+                            <a class="btn btn-warning btn-sm"
+                                th:href="@{/categorias/editar/{id} (id = ${c.id})}">Editar</a>
+                            <a class="btn btn-danger btn-sm"
+                                th:href="@{/categorias/excluir/{id} (id = ${c.id})}">Excluir</a>
+                        </td>
+                    </tr>
+            </table>
+            <div th:if="${categorias.size() == 0}" class="alert alert-warning">Ainda não existem categorias criadas.</div>
+        </div>
+    </section>
+</body>
+
+</html>

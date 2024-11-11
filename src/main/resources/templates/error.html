@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${status}"></title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+
+<body class="d-flex align-items-center justify-content-center min-vh-100">
+    <div class="text-center p-4" style="border: 1px solid #ddd; border-radius: 8px;">
+        <h1 class="h3 mb-3 font-weight-normal">
+            <span th:text="${status}"></span>
+        </h1>
+        <h2 th:text="${error}"></h2>
+        <div>
+            <div th:text="${message}"></div>
+            <a href="javascript:history.back()" class="btn btn-primary mt-3">Voltar para a página anterior</a>
+        </div>
+    </div>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+
+</html>

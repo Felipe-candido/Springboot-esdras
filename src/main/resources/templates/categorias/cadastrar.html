@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR" layout:decorate="~{layout}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Categorias</title>
+</head>
+
+<body>
+    <div class="container" layout:fragment="corpo">
+        <h1>Cadastro de Categorias</h1>
+        <div class="row mx-auto">
+            <form method="post" th:object="${categoria}" 
+            th:action="${categoria.id == null} ? @{/categorias/salvar} : @{/categorias/atualizar}">
+                <div class="mb-3">
+                    <label for="categoria">Categoria</label>
+                    <input type="text" class="form-control" id="categoria" th:field="*{descricao}" required>
+                    <input type="hidden" id="id" th:field="*{id}">
+                </div>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </form>
+        </div>
+    </div>
+    <script th:src="@{/js/bootstrap.bundle.min.js}" defer></script>
+</body>
+
+</html>

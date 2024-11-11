@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <section class="container" layout:fragment="corpo">
+        <div class="jumbotron">
+            <h1 class="display-4 mb-3">Notas</h1>
+        </div>
+        <div th:unless="${categorias.size() > 0}" class="alert alert-danger">É necessário criar as categorias antes criar as notas de desenvolvimento.</div>
+        <table th:if="${notas.size() > 0}" class="table table-striped table-hover table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Conteúdo</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="n : ${notas}">
+                    <th scope="row" th:text="${n.id}"></th>
+                    <td th:text="${n.conteudo}"></td>
+                    <td th:text="${n.categoria.descricao}"></td>
+                    <td colspan="2">
+                        <a class="btn btn-warning btn-sm" th:href="@{/notas/editar/{id} (id = ${n.id})}">Editar</a>
+                        <a class="btn btn-danger btn-sm" th:href="@{/notas/excluir/{id} (id = ${n.id})}">Excluir</a>
+                    </td>
+                </tr>
+        </table>
+        <div th:if="${notas.size() == 0}" class="alert alert-warning">Ainda não existem notas criadas.</div>
+    </section>
+    <script th:src="@{/js/bootstrap.bundle.min.js}" defer></script>
+</body>
+
+</html>
