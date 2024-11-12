@@ -43,7 +43,7 @@ public class CategoriasResource {
         service.excluir(id);
     }
 
-    //TODO: Cria o método de alteração de categoria.
+    // TODO: Cria o método de alteração de categoria.
     @PutMapping("/alterar/{id}")
     public Categoria alterar(@PathVariable("id") Long id, @RequestBody CategoriaDTO dto) {
         try {

@@ -53,16 +53,15 @@ public class NotasController {
 
     //TODO: Criar os recursos para edição e exclusão da notas
     @GetMapping("/editar/{id}")
-    public String preEdicao(@PathVariable("id") Long id,    Model model) {
+    public String preEdicao(@PathVariable("id") Long id, Model model) {
         try {
             Nota nota = service.buscarPorId(id);
             model.addAttribute("nota", nota);
             return "notas/cadastrar";
         } catch (Exception e) {
             e.printStackTrace();
-            model.addAttribute("error", "Nota não encontrada com ID: " + id);
-            return "notas/listar";
         }
+        return "redirect:/notas";
     }
 
 
